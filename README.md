@@ -1,3 +1,8 @@
+Fork to integrate:
+- Hue, saturation and upscaling from https://github.com/y4my4my4m/stable-diffusion-webui-pixelization
+- Dithering, palettes, contrast and gamma from https://github.com/luhovei/stable-diffusion-webui-pixelization
+- Tweak UI defaults
+
 # Pixelization
 
 Extension for web ui that pixelizes pictures.

@@ -375,8 +375,8 @@ class ScriptPostprocessingUpscale(scripts_postprocessing.ScriptPostprocessing):
         with ui_components.InputAccordion(False, label="Pixelize") as enable:
             with gr.Row():
                 upscale_after = gr.Checkbox(False, label="Keep resolution")
-                copy_hue = gr.Checkbox(False, label="Restore hue")
-                copy_sat = gr.Checkbox(False, label="Restore saturation")
+                copy_hue = gr.Checkbox(True, label="Restore hue")
+                copy_sat = gr.Checkbox(True, label="Restore saturation")
 
             with gr.Column():
                 pixel_size_x = gr.Slider(minimum=1, maximum=16, step=1, label="Pixel size X", value=4, elem_id="pixelization_pixel_size_x")
@@ -384,7 +384,7 @@ class ScriptPostprocessingUpscale(scripts_postprocessing.ScriptPostprocessing):
 
             with gr.Column():
                 with FormRow():
-                    color_count = gr.Slider(minimum=0, maximum=256, step=1, value=16, label="Color palette size (set to 0 to keep all colors)")
+                    color_count = gr.Slider(minimum=0, maximum=256, step=1, value=0, label="Color palette size (set to 0 to keep all colors)")
                     palette_methods = ['Median cut', 'Maximum coverage', 'Fast octree']
                     palette_method = gr.Radio(choices=palette_methods, value=palette_methods[0], label='Palette extraction method')
             with gr.Row():
@@ -402,8 +402,8 @@ class ScriptPostprocessingUpscale(scripts_postprocessing.ScriptPostprocessing):
                         )
                         create_refresh_button(palette_dropdown, refresh_palette_list,
                                               lambda: {"choices": refresh_palette_list()}, None)
-                    adjusted_contrast = gr.Slider(minimum=0, maximum=16, step=1, value=1, label="Adjust Contrast")
-                    adjusted_gamma = gr.Slider(minimum=0, maximum=16, step=1, value=1, label="Adjust Gamma")
+                    adjusted_contrast = gr.Slider(minimum=0, maximum=16, step=1, value=0, label="Adjust Contrast")
+                    adjusted_gamma = gr.Slider(minimum=0, maximum=16, step=1, value=0, label="Adjust Gamma")
 
         return {
             "enable": enable,
